@@ -1,19 +1,13 @@
 import re
 
-log_line = "Client 192.168.1.1 returned status 404"
+log_line = "Restarted server at 14:32"
 
-# 1. We define custom names inside < >: "IP" and "status"
-pattern = r"Client (?P\S+) returned status (?P\d+)"
+pattern = r"(?P\d+)"
 
 match = re.search(pattern, log_line)
 
 if match:
-    # Accessing individually by name:
-    print("IP Address:", match.group("IP"))
-    print("Status Code:", match.group("status"))
-    
-    print("---")
-    
-    # Converting ALL named groups into a dictionary:
-    log_data = match.groupdict()
-    print("Dictionary output:", log_data)
+    print("Matched text: ", match.group("status")) 
+else:
+    print("No match found.")
+
